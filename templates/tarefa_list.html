@@ -1,0 +1,43 @@
+{% extends "menu.html" %}
+{% load static %}
+
+{% block titulo %}Listar Tarefas{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Descrição</th>
+           <th scope="col">Status</th>
+           <th scope="col">Data Limite</th>
+           <th scope="col">Responsável</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        {% for tarefa in tarefas %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ tarefa.id }}</th>
+            <td>{{ tarefa.titulo }}</td>
+            <td>{{ tarefa.descricao }}</td>
+            <td>{{ tarefa.status }}</td>
+            <td>{{ tarefa.data_limite }}</td>
+            <td>{{ tarefa.responsavel }}</td>
+            <td>
+                <a href="{% url 'app:tarefa_edit' tarefa.id %}"><img src="{% static 'img/edit.png' %}" style="height: 30px"></a>
+                <a href="{% url 'app:tarefa_delete' tarefa.id %}" onclick="return confirm('Deseja realmente excluir a tarefa {{ tarefa.titulo }}?')"><img src="{% static 'img/del.png' %}" style="height: 30px"></a>
+            </td>
+        </tr>
+
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "menu.html" %}
+{% load static %}
+
+{% block titulo %}Cadastrar Tarefa{% endblock %}
+
+{% block body %}
+ <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Bem vindo ao Web_Tarefas!</h1>
+          <p>Você pode navegar pela aplicação no menu acima, ou clicando nos botões abaixo.</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Cadastrar Usuário</h2>
+            <p>Click no botão abaixo para cadastrar um novo usuário</p>
+            <p><a class="btn btn-secondary" href="{% url 'app:usuario_form' %}" role="button">Novo Usuário &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Listar Usuários</h2>
+            <p>Click no botão abaixo para listar os usuários </p>
+            <p><a class="btn btn-secondary" href="{% url 'app:usuario_list' %}" role="button">Ver Usuários &raquo;</a></p>
+          </div>
+         
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+<div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Cadastrar Tarefas</h2>
+            <p>Click no botão abaixo para cadastrar uma nova tarefa</p>
+            <p><a class="btn btn-secondary" href="{% url 'app:tarefa_form' %}" role="button">Nova Tarefa &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Listar Tarefas</h2>
+            <p>Click no botão abaixo para listar as tarefas </p>
+            <p><a class="btn btn-secondary" href="{% url 'app:tarefa_list' %}" role="button">Ver Tarefas &raquo;</a></p>
+          </div>
+         
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+    </main>
+
+
+{% endblock %}

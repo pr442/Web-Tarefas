@@ -1,0 +1,38 @@
+{% extends "menu.html" %}
+{% load static %}
+
+{% block titulo %}Cadastrar Usuário{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <br>
+    <form method="POST" enctype="multipart/form-data" action="{% if usuario %}{% url 'app:usuario_edit' usuario.id %}{% else %}{% url 'app:usuario_form' %}{% endif %}">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addonNome">Nome</span>
+            <input type="text" class="form-control" name="nome" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addonNome" value="{{ usuario.nome|default:'' }}">
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addonCPF">CPF</span>
+                    <input type="text" class="form-control" name="cpf" placeholder="CPF" aria-label="CPF" aria-describedby="basic-addonCPF"  value="{{ usuario.cpf|default:'' }}">
+                </div>
+            </div>
+           <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="email" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addonEmail"  value="{{ usuario.email|default:'' }}">
+                    <span class="input-group-text" id="basic-addonEmail">@example.com</span>
+                </div>
+            </div>
+           
+        <div class="input-group mb-3">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

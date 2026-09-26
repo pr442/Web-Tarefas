@@ -1,0 +1,39 @@
+{% extends "menu.html" %}
+{% load static %}
+
+{% block titulo %}Listar uSUÁRIOS{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+           <th scope="col">E-mail</th>
+            <th scope="col">Ações</th>
+        </tr>
+        </thead>
+        {% for usuario in usuarios %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ usuario.id }}</th>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.cpf }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>
+                <a href="{% url 'app:usuario_edit' usuario.id %}"><img src="{% static 'img/edit.png' %}" style="height: 30px"></a>
+                <a href="{% url 'app:usuario_delete' usuario.id %}" onclick="return confirm('Deseja realmente excluir o médico {{ usuario.nome }}?')"><img src="{% static 'img/del.png' %}" style="height: 30px"></a>
+            </td>
+        </tr>
+
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}
